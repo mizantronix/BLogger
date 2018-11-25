@@ -1,7 +1,7 @@
 *.txt
 *.md
 *.Cache
-/Botter/.vs
+/BLogger/.vs
 
 packages/
 Components/
