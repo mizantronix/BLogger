@@ -1,0 +1,10 @@
+*.txt
+*.md
+*.Cache
+/Botter/.vs
+
+packages/
+Components/
+
+bin/
+obj/
