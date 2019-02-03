@@ -1,47 +1,65 @@
-﻿namespace BLogger
+﻿namespace Blogger
 {
-    using System.Configuration;
+    using System;
+    using System.IO;
 
     public class Blogger
     {
-        private static Blogger _instanse;
+        private string LogPath { get; }
 
-        public static BloggerSettings BloggerSettings { get; private set; }
+        private bool EnableDate { get; }
 
-        private Blogger() { }
+        private string LogFileName { get; set; }
 
-        public static Blogger GetBlogger()
+        private Blogger()
         {
-            if (_instanse == null && CanBeInitialized())
-            {
-                return new Blogger();
-            }
-
-            return _instanse;
         }
 
-        private static bool CanBeInitialized()
+        public Blogger(string logPath, string logFileName = "", bool enambleDate = false)
         {
-            try
+            this.LogPath = logPath;
+            this.LogFileName = logFileName;
+            this.EnableDate = enambleDate;
+        }
+
+        public void LogEvent(string type, string message)
+        {
+            this.LogEvent(type, string.Empty, message);
+        }
+
+        public void LogEvent(string type, string header, string message)
+        {
+            this.NameChecker();
+            if (!string.IsNullOrEmpty(this.LogPath))
             {
-                var config = (BloggerSection) ConfigurationManager.GetSection("BloggerConfiguration");
-                BloggerSettings = config.CreateBloggerFromConfig();
-                return true;
-            }
-            catch (BloggerException)
-            {
-                return false;
+                using (var file = new StreamWriter($"{this.LogPath}\\{type}_{this.LogFileName}.log", true))
+                {
+                    file.WriteLine("=========================");
+                    if (EnableDate)
+                    {
+                        file.WriteLine($"{DateTime.Now}");
+                        file.WriteLine("-------------------------");
+                    }
+
+                    if (!string.IsNullOrEmpty(header))
+                    {
+                        file.WriteLine($"{header}");
+                        file.WriteLine("-------------------------");
+                    }
+
+                    file.WriteLine(message);
+                    file.WriteLine("=========================");
+                    file.WriteLine('\n');
+                }
             }
         }
 
-        public void Log(EventType eventType, string header, string message)
+        private void NameChecker()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public void Log(EventType eventType, string message)
-        {
-            this.Log(eventType, string.Empty, message);
+            if (string.IsNullOrEmpty(this.LogFileName))
+            {
+                this.LogFileName = "Default_Name";
+            }
         }
     }
 }
