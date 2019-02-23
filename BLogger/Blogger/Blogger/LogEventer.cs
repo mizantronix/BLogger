@@ -3,25 +3,8 @@
     using System;
     using System.IO;
 
-    public class Blogger
+    public partial class Blogger
     {
-        private string LogPath { get; }
-
-        private bool EnableDate { get; }
-
-        private string LogFileName { get; set; }
-
-        private Blogger()
-        {
-        }
-
-        public Blogger(string logPath, string logFileName = "", bool enambleDate = false)
-        {
-            this.LogPath = logPath;
-            this.LogFileName = logFileName;
-            this.EnableDate = enambleDate;
-        }
-
         public void LogEvent(string type, string message)
         {
             this.LogEvent(type, string.Empty, message);
@@ -51,14 +34,6 @@
                     file.WriteLine("=========================");
                     file.WriteLine('\n');
                 }
-            }
-        }
-
-        private void NameChecker()
-        {
-            if (string.IsNullOrEmpty(this.LogFileName))
-            {
-                this.LogFileName = "Default_Name";
             }
         }
     }

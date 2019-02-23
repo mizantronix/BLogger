@@ -41,8 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Blogger.cs" />
+    <Compile Include="Blogger\BloggerConstructors.cs" />
+    <Compile Include="Blogger\BloggerFields.cs" />
+    <Compile Include="Enums\LogPathType.cs" />
+    <Compile Include="Blogger\Initializer.cs" />
+    <Compile Include="Blogger\LogEventer.cs" />
+    <Compile Include="Blogger\PrivateMethods.cs" />
+    <Compile Include="Models\BloggerSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

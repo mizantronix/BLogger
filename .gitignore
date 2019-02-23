@@ -1,6 +1,7 @@
 *.txt
 *.md
 *.Cache
+*.nupkg
 /BLogger/.vs
 
 packages/
