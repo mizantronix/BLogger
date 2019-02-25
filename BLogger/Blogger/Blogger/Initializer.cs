@@ -1,27 +1,17 @@
-﻿namespace Blogger
-{
-    using System.IO;
+﻿using Blogger.Models;
 
+namespace Blogger.Blogger
+{
     public partial class Blogger
     {
         public void DefaultInitialize()
         {
-            this.LogPath = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory()));
-            this.EnableDate = false;
+            this._settings = new BloggerSettings();
         }
 
-        public void Initialize(string logPath = null, bool enableDate = false)
+        public void Initialize(string logPath = null, bool enableDate = false, string logFileName = null)
         {
-            this.LogPath = string.IsNullOrEmpty(logPath) ? Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory())) : logPath;
-
-            this.EnableDate = enableDate;
-        }
-
-        public Blogger(string logPath, string logFileName = "", bool enambleDate = false)
-        {
-            this.LogPath = logPath;
-            this.LogFileName = logFileName;
-            this.EnableDate = enambleDate;
+            this._settings = new BloggerSettings(logPath, enableDate, logFileName);
         }
     }
 }

@@ -1,12 +1,12 @@
-﻿namespace Blogger
+﻿namespace Blogger.Blogger
 {
     public partial class Blogger
     {
         private void NameChecker()
         {
-            if (string.IsNullOrEmpty(this.LogFileName))
+            if (!this._settings.ExistLogFileName)
             {
-                this.LogFileName = "Default_Name";
+                this._settings.LogFileName = "Default_Name";
             }
         }
     }

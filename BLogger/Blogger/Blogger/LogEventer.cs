@@ -1,4 +1,4 @@
-﻿namespace Blogger
+﻿namespace Blogger.Blogger
 {
     using System;
     using System.IO;
@@ -13,12 +13,12 @@
         public void LogEvent(string type, string header, string message)
         {
             this.NameChecker();
-            if (!string.IsNullOrEmpty(this.LogPath))
+            if (!string.IsNullOrEmpty(this._settings.LogPath))
             {
-                using (var file = new StreamWriter($"{this.LogPath}\\{type}_{this.LogFileName}.log", true))
+                using (var file = new StreamWriter($"{this._settings.LogPath}\\{type}_{this._settings.LogFileName}.log", true))
                 {
                     file.WriteLine("=========================");
-                    if (EnableDate)
+                    if (this._settings.EnableDate)
                     {
                         file.WriteLine($"{DateTime.Now}");
                         file.WriteLine("-------------------------");

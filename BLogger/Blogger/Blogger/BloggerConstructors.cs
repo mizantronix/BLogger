@@ -1,4 +1,4 @@
-﻿namespace Blogger
+﻿namespace Blogger.Blogger
 {
     public partial class Blogger
     {
@@ -8,13 +8,13 @@
 
         public Blogger Logger()
         {
-            if (this._logger == null)
+            if (_logger == null)
             {
-                this._logger = new Blogger();
+                _logger = new Blogger();
                 this.DefaultInitialize();
             }
 
-            return this._logger;
+            return _logger;
         }
     }
 }

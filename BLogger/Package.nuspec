@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Blogger</id>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <authors>Andrey Guliganov</authors>
     <owners>Andrey Guliganov</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
