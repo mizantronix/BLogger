@@ -6,6 +6,11 @@ namespace Blogger.Blogger
     {
         public void DefaultInitialize()
         {
+            if (_logger == null)
+            {
+                _logger = new Blogger();
+            }
+
             this._settings = new BloggerSettings();
         }
 

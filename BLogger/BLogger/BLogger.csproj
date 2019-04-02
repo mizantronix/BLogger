@@ -47,11 +47,15 @@
     <Compile Include="Blogger\Initializer.cs" />
     <Compile Include="Blogger\LogEventer.cs" />
     <Compile Include="Blogger\PrivateMethods.cs" />
+    <Compile Include="Enums\LogType.cs" />
     <Compile Include="Models\BloggerSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Templates\DefaultTemplate.cs" />
+    <Compile Include="Templates\ITemplate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

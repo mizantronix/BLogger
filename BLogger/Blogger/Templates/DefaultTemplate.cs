@@ -1,10 +1,17 @@
-﻿namespace Blogger.Blogger
-{
-    using System;
-    using System.IO;
+﻿using System;
+using System.IO;
 
-    public partial class Blogger
+namespace Blogger.Templates
+{
+    public class DefaultTemplate : ITemplate
     {
+        public string Name { get; private set; }
+
+        public DefaultTemplate()
+        {
+            this.Name = "default";
+        }
+
         public void LogEvent(string type, string message)
         {
             this.LogEvent(type, string.Empty, message);
